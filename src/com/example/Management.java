@@ -180,9 +180,11 @@ public class Management {
 	}
 	public String report() {
 		System.out.println("INVENTORY REPORT");
-		System.out.println("================");
+		System.out.println("==============================");
+		System.out.printf( "intname"+"\t"+ "costprice"+"\t"+ "sellprice"+"\t"+ "quantityavailable"+"\t");
+		System.out.println("\n==============================");
 		Statement stmt = null;
-		String exp = "select intname, costprice, sellprice from list";
+		String exp = "select intname, costprice, sellprice, quantity from list";
 		try {
 			 stmt= (Statement) con.createStatement();
 			ResultSet rs = stmt.executeQuery(exp);
@@ -192,7 +194,8 @@ public class Management {
 				String intname= rs.getString("intname")+"\t";
 				String costprice=rs.getString("costprice")+"\t" ;
 				String sellprice= rs.getString("sellprice")+"\t";
-				System.out.println(intname+""+costprice+""+sellprice);
+				String quantity=rs.getString("quantity")+"\t";
+				System.out.println(intname+""+costprice+""+sellprice+""+quantity);
 			}
 			
 
